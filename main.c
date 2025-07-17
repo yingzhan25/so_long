@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:39:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/16 12:39:44 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:41:45 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	main(int ac, char *av[])
 {
-	t_map	map;
-	t_data	data;
+	t_map	*map;
+//	t_data	data;
 
 	if (ac != 2)
 	{
-		printf("ONLY 1 map is allowd!\n");
+		ft_printf("ONLY 1 map allowd\n");
 		return (1);
 	}
 	map = parse_map(av[1]);
-	init_game(&game, &map);
-	mlx_loop(data.mlx_ptr);
-	free_map(&map);
-	return 0;
+/*	init_game(&game, &map);
+	mlx_loop(data.mlx_ptr);*/
+	free_map(map);
+	return (0);
 }

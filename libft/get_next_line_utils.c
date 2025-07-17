@@ -6,13 +6,13 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 15:13:15 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/06/02 12:20:24 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/17 19:01:20 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr_g(const char *str, int c)
 {
 	if (str == NULL)
 		return (NULL);
@@ -27,7 +27,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_g(const char *str)
 {
 	size_t	i;
 
@@ -45,7 +45,7 @@ char	*ft_strdup(const char *str)
 
 	if (str == NULL)
 		return (NULL);
-	len = ft_strlen(str);
+	len = ft_strlen_g(str);
 	buffer = malloc(sizeof(char) * (len + 1));
 	if (!buffer)
 		return (NULL);
@@ -67,7 +67,7 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 
 	if (str == NULL)
 		return (NULL);
-	s_len = ft_strlen(str);
+	s_len = ft_strlen_g(str);
 	if (len == 0 || start >= s_len)
 		return (ft_strdup(""));
 	if (len > s_len - start)
@@ -99,8 +99,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s2));
 	if (!s2 || *s2 == '\0')
 		return (ft_strdup(s1));
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len1 = ft_strlen_g(s1);
+	len2 = ft_strlen_g(s2);
 	buffer = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!buffer)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:16 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/16 14:40:42 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:44:57 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,12 @@ typedef struct s_data
 	void	*texture[5];
 	t_map	*map;
 }	t_data;
+
+t_map	*parse_map(const char *name);
+int		is_path_valid(t_map *map);
+void	free_map(t_map *map);
+void	exit_with_error(char *s);
+char	**make_empty_grid(t_map *map);
+void	clean_fail_alloc(int i, char ***grid);
 
 # endif

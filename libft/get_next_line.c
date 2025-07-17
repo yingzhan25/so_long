@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 15:12:12 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/06/04 12:52:37 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/17 18:52:39 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	ft_new_lines(char **buffer, char **line)
 	char	*temp;
 	char	*newline_pos;
 
-	newline_pos = ft_strchr(*buffer, '\n');
+	newline_pos = ft_strchr_g(*buffer, '\n');
 	*line = ft_substr(*buffer, 0, newline_pos - *buffer + 1);
 	if (!*line)
 		return (-1);
@@ -84,7 +84,7 @@ static char	*ft_return_lines(char **buffer)
 		return (NULL);
 	}
 	line = NULL;
-	if (ft_strchr(*buffer, '\n'))
+	if (ft_strchr_g(*buffer, '\n'))
 	{
 		if (ft_new_lines(buffer, &line) == -1)
 			return (NULL);
@@ -108,7 +108,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	newline = ft_strchr(buffer, '\n');
+	newline = ft_strchr_g(buffer, '\n');
 	while (!newline)
 	{
 		bytes_read = ft_handle_bytes(fd, &buffer);
@@ -120,7 +120,7 @@ char	*get_next_line(int fd)
 		}
 		if (bytes_read == 0)
 			break ;
-		newline = ft_strchr(buffer, '\n');
+		newline = ft_strchr_g(buffer, '\n');
 	}
 	return (ft_return_lines(&buffer));
 }

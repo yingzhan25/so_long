@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:22:00 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/06/03 16:16:59 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/17 19:02:40 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *str, int c);
-size_t	ft_strlen(const char *str);
+char	*ft_strchr_g(const char *str, int c);
+size_t	ft_strlen_g(const char *str);
 char	*ft_strdup(const char *str);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);

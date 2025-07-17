@@ -6,7 +6,7 @@
 #    By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/16 12:39:56 by yingzhan          #+#    #+#              #
-#    Updated: 2025/07/16 12:39:59 by yingzhan         ###   ########.fr        #
+#    Updated: 2025/07/17 18:41:12 by yingzhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ MLXFLAGS = -L/usr/local/lib/ -lmlx -lXext -lX11
 INCLUDES = -I./ -I/usr/local/include -I./libft/includes/
 LIBFT = libft/libft.a
 
-SRCS = main.c
+SRCS = main.c map.c floodfil.c helper.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
