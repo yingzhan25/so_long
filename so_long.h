@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:16 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/17 18:44:57 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:33:16 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_map
 	int		start_x;
 	int		start_y;
 	int		collect;
+	int		exit;
+	int		player;
 }	t_map;
 
 typedef struct s_data
