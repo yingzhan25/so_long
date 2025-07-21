@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:39:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/17 18:41:45 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:36:46 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,10 @@ int	main(int ac, char *av[])
 //	t_data	data;
 
 	if (ac != 2)
-	{
-		ft_printf("ONLY 1 map allowd\n");
-		return (1);
-	}
+		free_and_exit(-1, 0,"Only 1 map allowd");
 	map = parse_map(av[1]);
 /*	init_game(&game, &map);
 	mlx_loop(data.mlx_ptr);*/
-	free_map(map);
+	free_and_exit(-1, map, NULL);
 	return (0);
 }

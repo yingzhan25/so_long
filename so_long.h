@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:16 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/18 17:33:16 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:26:19 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ typedef struct s_data
 
 t_map	*parse_map(const char *name);
 int		is_path_valid(t_map *map);
-void	free_map(t_map *map);
-void	exit_with_error(char *s);
+void	free_and_exit(int fd, t_map *map, char *s);
 char	**make_empty_grid(t_map *map);
-void	clean_fail_alloc(int i, char ***grid);
 
 # endif

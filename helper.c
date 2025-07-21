@@ -6,29 +6,13 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 17:23:00 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/17 18:49:23 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/21 13:48:51 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_map *map)
-{
-	int	i;
-
-	if (!map || !map->grid)
-		return ;
-	i = 0;
-	while (i < map->height)
-	{
-		free(map->grid[i]);
-		i++;
-	}
-	free(map->grid);
-	map->grid = NULL;
-}
-
-void	exit_with_error(char *s)
+static void	exit_with_error(char *s)
 {
 	write(2, "Error\n", 6);
 	write(2, s, ft_strlen(s));
@@ -36,19 +20,27 @@ void	exit_with_error(char *s)
 	exit (1);
 }
 
-void	clean_fail_alloc(int i, char ***grid)
+void	free_and_exit(int fd, t_map *map, char *s)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while (j < i)
+	if (map && map->grid)
 	{
-		free(grid[j]);
-		j++;
+		i = 0;
+		while (i < map->height)
+		{
+			free(map->grid[i]);
+			i++;
+		}
+		free(map->grid);
+		map->grid = NULL;
 	}
-	free(grid);
-	grid = NULL;
-	exit_with_error("Memory allocation failed");
+	if (map)
+		free(map);
+	if (fd >= 0)
+		close(fd);
+	if (s)
+		exit_with_error(s);
 }
 
 char	**make_empty_grid(t_map *map)
@@ -58,13 +50,13 @@ char	**make_empty_grid(t_map *map)
 
 	grid = malloc(sizeof(char*) * map->height);
 	if (!grid)
-		exit_with_error("Memory allocation failed");
+		free_and_exit(-1, map, "Memory allocation failed");
 	i = 0;
 	while (i < map->height)
 	{
 		grid[i] = malloc(sizeof(char) * (map->width + 1));
 		if (!grid[i])
-			clean_fail_alloc(i, &grid);
+			free_and_exit(-1, map, "Memory allocation failed");
 		ft_memset(grid[i], '0', map->width);
 		grid[i][map->width] = '\0';
 		i++;
