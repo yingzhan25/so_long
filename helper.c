@@ -6,13 +6,13 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 17:23:00 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/21 13:48:51 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:29:13 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	exit_with_error(char *s)
+void	exit_with_error(char *s)
 {
 	write(2, "Error\n", 6);
 	write(2, s, ft_strlen(s));

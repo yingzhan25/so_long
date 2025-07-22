@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:24 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/21 13:25:34 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/21 17:58:09 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ t_map	*parse_map(const char *name)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		free_and_exit(-1, map,"Failed to allocate map");
+		free_and_exit(-1, map,"Memory allocation failed");
 	init_map(map);
 	get_map_height(name, map);
 	fill_map(name, map);

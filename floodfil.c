@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 18:05:48 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/21 13:32:16 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:31:11 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ int	is_path_valid(t_map *map)
 	char	**vis;
 	int	is_exit;
 	int	i;
+	int	tmp;
 
 	is_exit = 0;
 	vis = make_empty_grid(map);
 	if (!vis)
 		free_and_exit(-1, map, "Memory allocation failed");
+	tmp = map->collect;
 	flood_fil(map->start_y, map->start_x, map, &is_exit, vis);
 	i = 0;
 	while (i < map->height)
@@ -48,7 +50,10 @@ int	is_path_valid(t_map *map)
 	}
 	free(vis);
 	if (map->collect == 0 && is_exit == 1)
+	{
+		map->collect = tmp;
 		return (1);
+	}
 	else
 		return (0);
 }
