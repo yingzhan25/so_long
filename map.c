@@ -6,13 +6,13 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:24 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/21 17:58:09 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:37:23 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	get_map_width(int fd, t_map *map)
+static void	get_map_width(int fd, t_map *map)
 {
 	char	*first_line;
 
@@ -24,11 +24,22 @@ void	get_map_width(int fd, t_map *map)
 	free (first_line);
 }
 
-void	get_map_height(const char *name, t_map *map)
+static int	get_cur_width(char *line)
+{
+	int	cur_width;
+
+	cur_width = 0;
+	if (ft_strchr(line, '\n'))
+		cur_width = ft_strlen(line) - 1;
+	else
+		cur_width = ft_strlen(line);
+	return (cur_width);
+}
+
+static void	get_map_height(const char *name, t_map *map)
 {
 	int		fd;
 	char	*line;
-	int		cur_width;
 	int		is_rect;
 
 	fd = open(name, O_RDONLY);
@@ -39,11 +50,7 @@ void	get_map_height(const char *name, t_map *map)
 	is_rect = 1;
 	while (line)
 	{
-		if (ft_strchr(line, '\n'))
-			cur_width = ft_strlen(line) - 1;
-		else
-			cur_width = ft_strlen(line);
-		if (cur_width != map->width)
+		if (get_cur_width(line) != map->width)
 			is_rect = 0;
 		map->height++;
 		free(line);
@@ -54,7 +61,7 @@ void	get_map_height(const char *name, t_map *map)
 	close(fd);
 }
 
-void	fill_map(const char *name, t_map *map)
+static void	fill_map(const char *name, t_map *map)
 {
 	int		fd;
 	int		i;
@@ -77,55 +84,15 @@ void	fill_map(const char *name, t_map *map)
 	close(fd);
 }
 
-void	check_chars(t_map *map, char c, int i, int j)
+t_map	*parse_map(const char *name)
 {
-	if (!ft_strchr("10CPE", c))
-		free_and_exit(-1, map, "Invalid character in map");
-	if (c != '1')
-		if((i == 0 || i == map->height - 1) || (j == 0 || j == map->width - 1))
-			free_and_exit(-1, map, "Map not surrounded by walls");
-	if (c == 'P')
-	{
-		map->start_x = j;
-		map->start_y = i;
-		if (++map->player != 1)
-			free_and_exit(-1, map, "More than 1 player in map");
-	}
-	if (c == 'E' && ++map->exit != 1)
-		free_and_exit(-1, map, "More than 1 exit in map");
-	if (c == 'C')
-		map->collect++;
-}
+	t_map	*map;
 
-void	validate_map(t_map *map)
-{
-	int		i;
-	int		j;
-	char	c;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			c = map->grid[i][j];
-			check_chars(map, c, i, j);
-			j++;
-		}
-		i++;
-	}
-	if (map->collect < 1)
-		free_and_exit(-1, map, "Less than 1 collectible in map");
-	if (map->exit < 1)
-		free_and_exit(-1, map, "Less than 1 exit in map");
-	if (map->player < 1)
-		free_and_exit(-1, map, "Less than 1 player in map");
-}
-
-void	init_map(t_map *map)
-{
+	map = malloc(sizeof(t_map));
+	if (!map)
+		free_and_exit(-1, map, "Memory allocation failed");
 	map->grid = NULL;
+	map->vis = NULL;
 	map->width = 0;
 	map->height = 0;
 	map->start_x = -1;
@@ -133,16 +100,6 @@ void	init_map(t_map *map)
 	map->collect = 0;
 	map->exit = 0;
 	map->player = 0;
-}
-
-t_map	*parse_map(const char *name)
-{
-	t_map	*map;
-
-	map = malloc(sizeof(t_map));
-	if (!map)
-		free_and_exit(-1, map,"Memory allocation failed");
-	init_map(map);
 	get_map_height(name, map);
 	fill_map(name, map);
 	validate_map(map);

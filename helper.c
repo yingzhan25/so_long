@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 17:23:00 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/22 17:29:13 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:09:43 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,24 @@ void	exit_with_error(char *s)
 	exit (1);
 }
 
-void	free_and_exit(int fd, t_map *map, char *s)
+void	free_grid(t_map *map, char **s)
 {
 	int	i;
 
-	if (map && map->grid)
+	i = 0;
+	while (i < map->height)
 	{
-		i = 0;
-		while (i < map->height)
-		{
-			free(map->grid[i]);
-			i++;
-		}
-		free(map->grid);
-		map->grid = NULL;
+		free(s[i]);
+		i++;
 	}
+	free(s);
+	s = NULL;
+}
+
+void	free_and_exit(int fd, t_map *map, char *s)
+{
+	if (map && map->grid)
+		free_grid(map, map->grid);
 	if (map)
 		free(map);
 	if (fd >= 0)
@@ -43,12 +46,41 @@ void	free_and_exit(int fd, t_map *map, char *s)
 		exit_with_error(s);
 }
 
+/*First free map using free_and_exit(s = NULL);
+then cleanup_mlx;
+at last exit_with_error(if needed)*/
+
+void	cleanup_mlx(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		if (data->tex[i])
+			mlx_destroy_image(data->mlx_ptr, data->tex[i]);
+		i++;
+	}
+	if (data->win_ptr)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+		data->win_ptr = NULL;
+	}
+	if (data->mlx_ptr)
+	{
+		mlx_destroy_display(data->mlx_ptr);
+		free(data->mlx_ptr);
+		data->mlx_ptr = NULL;
+	}
+	free(data);
+}
+
 char	**make_empty_grid(t_map *map)
 {
 	char	**grid;
-	int	i;
+	int		i;
 
-	grid = malloc(sizeof(char*) * map->height);
+	grid = malloc(sizeof(char *) * map->height);
 	if (!grid)
 		free_and_exit(-1, map, "Memory allocation failed");
 	i = 0;
