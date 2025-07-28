@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 15:13:19 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/17 19:02:24 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:59:42 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ char	*ft_strchr_g(const char *str, int c);
 size_t	ft_strlen_g(const char *str);
 char	*ft_strdup(const char *str);
 char	*ft_substr(char const *str, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin_g(char const *s1, char const *s2);
 
 #endif

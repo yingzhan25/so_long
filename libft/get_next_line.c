@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 15:12:12 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/17 18:52:39 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/23 18:59:05 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_store_bytes(char **buffer, char *chunk)
 {
 	char	*temp;
 
-	temp = ft_strjoin(*buffer, chunk);
+	temp = ft_strjoin_g(*buffer, chunk);
 	if (!temp)
 	{
 		free (chunk);

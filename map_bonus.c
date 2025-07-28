@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:24 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/24 13:03:35 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/25 11:35:31 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	get_map_width(int fd, t_map *map)
 {
@@ -100,6 +100,9 @@ t_map	*parse_map(const char *name)
 	map->collect = 0;
 	map->exit = 0;
 	map->player = 0;
+	map->enemy_x = 0;
+	map->enemy_y = 0;
+	map->enemy = 0;
 	get_map_height(name, map);
 	fill_map(name, map);
 	validate_map(map);
