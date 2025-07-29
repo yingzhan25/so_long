@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:33:58 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/28 18:24:13 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:42:11 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	game_loop(t_data *data)
 		exit(0);
 	}
 	now = clock();
-	if ((now - data->last) < CLOCKS_PER_SEC / 2)
+	if ((now - data->last) < CLOCKS_PER_SEC / TIME_DIV)
 		return (0);
 	data->last = now;
 	move_enemy(data);

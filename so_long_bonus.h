@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:16 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/29 14:00:32 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:42:02 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_BONUS_H
 
 # define SIZE 32
+# define TIME_DIV 5
 # define KEY_W 119
 # define KEY_S 115
 # define KEY_A 97
