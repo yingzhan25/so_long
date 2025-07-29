@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:39:41 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/28 12:07:39 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:01:14 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	init_data(t_data *data, t_map *map)
 	data->win_ptr = mlx_new_window(data->mlx_ptr, map->width * SIZE, \
 					map->height * SIZE, "./so_long");
 	data->exit_flag = 0;
+	data->exit_display = 0;
 	data->steps = 0;
 }
 

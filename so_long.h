@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:16 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/25 15:59:56 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:00:51 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 	void	*win_ptr;
 	void	*tex[5];
 	int		exit_flag;
+	int		exit_display;
 	int		steps;
 	t_map	*map;
 }	t_data;

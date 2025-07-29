@@ -6,7 +6,7 @@
 /*   By: yingzhan <yingzhan@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:40:16 by yingzhan          #+#    #+#             */
-/*   Updated: 2025/07/28 18:49:18 by yingzhan         ###   ########.fr       */
+/*   Updated: 2025/07/29 14:00:32 by yingzhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ typedef struct s_data
 	void	*tex[7];
 	int		dir;
 	int		exit_flag;
-	int		exit_display0;
-	int		exit_display1;
-	int		collect_display;
+	int		exit_display0;//display exit during player moves
+	int		exit_display1;//display exit during enemy moves
+	int		collect_display;//display collectibles when enemy moves
 	int		steps;
 	t_map	*map;
 	void	*img;
