@@ -7,6 +7,8 @@ _0715-0718 Starting the program with map parsing_
 
 _0721-0723 Learning about the fundamentals of window management and rendering, finishing the 1st draft of mandatory part_
 
+(This handbook was useful for new beginners: https://harm-smits.github.io/42docs/)
+
 _0724 Fixing all the problems of memory leak_
 
 _0725 Starting the bonus part(enemy, display of moves, animation) but stuck by flashing problem_
