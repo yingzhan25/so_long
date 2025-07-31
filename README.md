@@ -5,21 +5,27 @@ It took me altogether 2 weeks to finish this project which is soooooo long.
 
 _0715-0718 Starting the program with map parsing_
 
-_0721-0723 Learning about the fundamentals of window management and rendering, finishing the the 1st draft of mandatory part_
+_0721-0723 Learning about the fundamentals of window management and rendering, finishing the 1st draft of mandatory part_
 
 _0724 Fixing all the problems of memory leak_
 
 _0725 Starting the bonus part(enemy, display of moves, animation) but stuck by flashing problem_
 
-_0728 Rewriting my rendering part_
+_0728 Rewriting my rendering part and fixing all the bugs_
 
 _0729 Get evaluated and passed with 123(one of my evaluators deducted 2 points because of the simplicity of my realization of bonus part)_
 # The satisfactory parts of my project
--My map parsing part is completely and the error handling is explicit
+-My map parsing part is complete and the error handling is explicit
 
 I had a lot of maps created, valid/invalid, small/medium/large...
 
--I love the theme I chose. It is pretty cute.
+The exit is clean and error messages are clear
+
+-I love the theme I chose. It is pretty cute, isn't it?
+
+A little pig's adventure: It has to collect all the coins and then jumps into the swimming pool before caught by the BUG.
+
+<img width="675" height="396" alt="Screenshot from 2025-07-31 15-36-50" src="https://github.com/user-attachments/assets/81d01e49-0e5e-4f9f-8266-5e39376f9767" />
 
 Textures credit to: https://opengameart.org/content/cuyo-level-walls
 
